@@ -3,6 +3,9 @@ import bodyParser from "body-parser";
 import multer from "multer";
 import { Post } from "./db.js";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 const storage = multer.memoryStorage(); 
@@ -11,7 +14,9 @@ const upload = multer({ storage: storage });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/brecho", { useNewUrlParser: true })
+const pswd = process.env.PASSWORD
+
+mongoose.connect(`mongodb+srv://joaopecurcino:${pswd}@brecho.rowqou8.mongodb.net`, { useNewUrlParser: true })
 
 app.listen(3000, () => {
     console.log("http://localhost:3000")
@@ -61,6 +66,7 @@ app.post("/compose", upload.single("img"), async (req, res) => {
 app.post("/delete", async (req, res) => {
     try {
         const id = req.body.id
+        console.log(id)
         await Post.deleteOne({ _id: id })
         res.redirect("/")
     } catch (err) {
