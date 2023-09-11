@@ -8,7 +8,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const storage = multer.memoryStorage(); 
+const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,14 +16,26 @@ app.use(express.static("public"));
 
 const pswd = process.env.PASSWORD
 
-mongoose.connect(`mongodb+srv://joaopecurcino:${pswd}@brecho.rowqou8.mongodb.net`, { useNewUrlParser: true })
+const connectDb = async () => {
+
+    const uri = `mongodb+srv://joaopecurcino:${pswd}@brecho.rowqou8.mongodb.net/?retryWrites=true&w=majority`
+
+    try {
+        await mongoose.connect(uri, { useNewUrlParser: true })
+    } catch (err) {
+        console.log(err)
+    }
+}
+
 
 app.listen(3000, () => {
     console.log("http://localhost:3000")
 })
 
+connectDb()
+
 app.get("/", async (req, res) => {
-    
+
     try {
         const posts = await Post.find({})
         res.render("index.ejs", { post: posts })
@@ -39,15 +51,15 @@ app.get("/compose", (req, res) => {
 })
 
 app.post("/compose", upload.single("img"), async (req, res) => {
-    
+
     try {
-        
+
         const description = req.body.description
         const price = req.body.price
         const buffer = req.file.buffer
-        
+
         const imageBase64 = buffer.toString("base64");
- 
+
         const imageSrc = `data:${req.file.mimetype};base64,${imageBase64}`;
 
         const post = new Post({
