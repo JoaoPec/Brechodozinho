@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/index.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <nav>
+
+        <img class="vestidoNav" src="../public/assets/vestido.png" alt="vestido">
+
+        <h1 class="navTitle">Brechodozinho</h1>
+
+    </nav>
+
+
+    <form action="/filter" method="post">
+
+        <div class="categories">
+            <button type="submit" class="category">
+
+                <input type="hidden" name="category" value="all" id="all">
+                <label for="all">Todos</label>
+
+            <button>
+
+            <button type="submit" class="category">
+
+                <input type="hidden" name="kimono" value="kimono" id="kimono">
+                <label for="kimono">Kimono</label>
+
+            </button>
+
+            <button type="submit" class="category">
+
+                <input type="hidden" name="shorts" value="shorts" id="short">
+                <label for="shorts">Shorts</label>
+
+            </button>
+
+            <button type="submit" class="category">
+
+                <input type="hidden" name="camisa" value="camisa" id="camisa">
+                <label for="camisa">Camisa</label>
+
+            </button>
+
+        </div>
+
+    </form>
+
+    <div class="cards">
+
+
+        <div class="card">
+
+            <img class="cardImg" src="../public/assets/vestido.png" alt="kimono">
+
+            <div class="cardDescription">
+
+                <h2>
+                    Kimono
+                </h2>
+
+                <p>
+                    R$ 50,00
+                </p>
+
+            </div>
+
+            <button class="cardButton">
+                Comprar
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+
+</body>
+
+</html>

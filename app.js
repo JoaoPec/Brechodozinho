@@ -14,6 +14,8 @@ const upload = multer({ storage: storage });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+app.set("view engine", "ejs");
+
 const pswd = process.env.PASSWORD
 
 const connectDb = async () => {
@@ -21,7 +23,10 @@ const connectDb = async () => {
     const uri = `mongodb+srv://joaopecurcino:${pswd}@brecho.rowqou8.mongodb.net/?retryWrites=true&w=majority`
 
     try {
+
         await mongoose.connect(uri, { useNewUrlParser: true })
+        console.log('Conexão bem-sucedida ao MongoDB Atlas');
+
     } catch (err) {
         console.log(err)
     }
@@ -38,7 +43,7 @@ app.get("/", async (req, res) => {
 
     try {
         const posts = await Post.find({})
-        res.render("index.ejs", { post: posts })
+        res.render("index", { post: posts })
         console.log(posts)
     } catch (err) {
         res.status(500).send("Error: " + err)
@@ -47,7 +52,7 @@ app.get("/", async (req, res) => {
 })
 
 app.get("/compose", (req, res) => {
-    res.render("compose.ejs")
+    res.render("compose")
 })
 
 app.post("/compose", upload.single("img"), async (req, res) => {
@@ -75,12 +80,22 @@ app.post("/compose", upload.single("img"), async (req, res) => {
     }
 })
 
+app.get("/product", (req,res) => {
+
+    const id = req.body.id
+
+    res.render("product")
+
+})
+
 app.post("/delete", async (req, res) => {
     try {
+
         const id = req.body.id
         console.log(id)
         await Post.deleteOne({ _id: id })
         res.redirect("/")
+
     } catch (err) {
         res.status(500).send("Error: " + err)
     }

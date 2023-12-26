@@ -1,0 +1,117 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin: 0 auto;
+    width: 100%;
+
+}
+
+
+nav{
+    background-color: #FFBDB5;
+    color: #fff;
+    padding: 10px;
+    height: 80px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.vestidoNav{
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+}
+
+.navTitle{
+    font-size: 45px;
+    margin-left: 670px;
+    color: white;
+}
+
+.categories{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 55px;
+    margin-bottom: 10px;
+}
+
+.category{
+    background-color: #FFBDB5;
+    color: #fff;
+    padding: 10px;
+    height: 50px;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-style: none;
+}
+
+.cards{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    margin-top: 25px;
+}
+
+.card{
+    background-color: #FFBDB5;
+    color: #fff;
+    padding: 10px;
+    height: 320px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-style: none;
+    margin-bottom: 10px;
+}
+
+.cardImg{
+    width: 200px;
+    height: 200px;
+    margin-bottom: 5px;
+}
+
+.cardDescription{
+    text-align: center;
+}
+
+.cardDescription > h2{
+
+    margin-top: 0;
+
+    margin-bottom: 0;
+
+}
+
+.cardDescription > p{
+    margin-top: 0;
+}
+
+.cardButton{
+    background-color: #FFBDB5;
+    color: #fff;
+    padding: 10px;
+    height: 20px;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-style: none;
+}
